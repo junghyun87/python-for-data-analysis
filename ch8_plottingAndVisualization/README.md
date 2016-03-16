@@ -6,8 +6,17 @@
 * fig.gca()로 active subplot에 대한 reference 얻기
 * blank figure에는 plot을 못만듬. fig.add_subplot으로 subplots을 추가해야함.
 * plt.plot으로 plot을 그리면 사용된 마지막 figure의 subplot에 plot을 그린다. 이전에 그린 plot이 있으면 그 위에 겹쳐서 그려진다.
-* fig.add_subplot은 AxesSubplot objects를 리턴.
-* plt.plot으로 plot을 그리면 바로 plotting되는데 ax로 plot을 그리면 바로 안됨. 이유는? plt.draw()하면 바로 반영됨.
+``` python
+#example
+plt.plot(randn(50).cumsum(),'k--')
+```
+* fig.add_subplot은 AxesSubplot objects를 리턴. 이 objects로 plot을 그리면 해당 subplot에 그려짐.
+``` python
+#example
+ax1 = fig.add_subplot(2,2,1)
+ax1.hist(randn(100), bins=20, color='k', alpha=0.3)
+```
+* plt.plot으로 plot을 그리면 바로 plotting되는데 AxesSubplot objects로 plot을 그리면 바로 안됨. 이유는? plt.draw()하면 바로 반영됨.
 * fig, axes = plt.subplots(2,3)으로 한번에 여러 subplot objects 생성.
 * 처음에 axe references가 없더라도 fig.get_axes()로 AxesSubplot objects에 접근할 수 있음.
 
